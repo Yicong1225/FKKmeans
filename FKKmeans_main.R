@@ -149,7 +149,6 @@ norm_minmax <- function(x){
 #  You have to choose one scenario parameter 、
 #  (default:  SC = 1)
 # 
-# 
 ############################################################################
 
 SC <- 1 ## Scenario Num (1:normal, 2:X causal, 3:T causal)
@@ -163,7 +162,6 @@ pt <- 1
 rep <- 1 # replication times
 
 cluster_number <- c(rep(0,n/4),rep(1,n/4),rep(2,n/4),rep(3,n/4))
-
 # make preparations for generating X 
 if (SC == 1) { # Scenario 1
   theta <- rep(0, k)
@@ -335,6 +333,8 @@ while (i <= rep) {
     k_out[2*i,] <- clu2 #cluster outcome for RKHS norm
   })
 }
+
+
 
 ## get ARI
 for (i in 1:rep) {
