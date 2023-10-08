@@ -1,7 +1,7 @@
 ############################################################################
 #   a toy example for Scenario 1
 ############################################################################
-
+source("FKKmeans_main.R")
 s <- 3
 oise.sd <- 0.2 ## Noise level
 m <- 10 	## No. of individual (load with common file)

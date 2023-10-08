@@ -1,11 +1,12 @@
+###################
+### auxiliary functions
+###################
+library(vegan)
+library(GUniFrac)
+library(cluster)
+library(dirmult)
+library(MASS)
 
-# source("Function-copy.R")
-# source("function_x_highdim.R")
-# library(vegan)
-# library(GUniFrac)
-# library(cluster)
-# library(dirmult)
-# library(MASS)
 gen_solve <-  function(V) return(ginv(V))
 sqrt_matrix<-function (V) {
   V.eig<-eigen(V)
@@ -24,30 +25,6 @@ nor_matrix<-function (n) {return(diag(n)-matrix(rep(1,n),n,1)%*%t(matrix(rep(1,n
 gen_solve<-function(V) return(ginv(V))
 tr = function(M){sum(diag(M))}
 Trace = function(M){sum(diag(M))}
-# redundant case
-KMR = function(y, K, subID, lambda){
-  N=length(y)
-  n=length(unique(subID))
-  out=matrix(NA, nrow=n,ncol=N)  ## output of alpha-coef matrix
-  res=NULL
-  trhat=0
-  for(i in 1:n){
-    index=which(subID==unique(subID)[i])
-    Ki=K[index,]
-    yi=y[index]
-    # get alphahat by individual's block 
-    alpha=mysolve(t(Ki)%*%Ki + lambda*K)%*%t(Ki)%*%yi
-    #alpha=mysolve(Ki%*%t(Ki) + lambda*K)%*%Ki%*%yi
-    out[i,]=alpha
-    res=c(res,yi-Ki%*%alpha)
-    hati=Ki%*%mysolve(t(Ki)%*%Ki + lambda*K)%*%t(Ki) ## Hat-matrix
-    #hati=Ki%*%mysolve(Ki%*%t(Ki) + lambda*K)%*%Ki
-    trhat=trhat+Trace(hati)
-  }
-  RSS=sum(res^2)
-  BIC=log(RSS)+trhat*log(N)/N
-  return(list(alphahat = out, BIC=BIC))
-}
 
 #' select the tuning parameter lambda
 #'
@@ -63,7 +40,7 @@ KMR.lamda.new = function(y, K, subID, Lambda){
   ###################################################
   ## tuning function of lambda parameter in KMR
   ## Input Lambda now is a vector of possible lambda values
-  ## ?? Need to figure out possible candidates
+  ## Need to figure out possible candidates
   m=length(Lambda)
   BICs=rep(NA,m)
   out=list()
