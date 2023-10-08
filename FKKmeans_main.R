@@ -336,15 +336,15 @@ while (i <= rep) {
   })
 }
 
-# ## get ARI
-# for (i in 1:rep) {
-#   b1 <- rep(0,24);b2 <- b1;b3 <- b1; b4 <- b1
-#   for (j in 1:24) b1[j]=adjustedRandIndex(k_out[2*i-1,],myclusters[j,])
-#   ri[i,1]=max(b1)
-#   for (l in 1:24) b2[l]=adjustedRandIndex(k_out[2*i,],myclusters[l,])
-#   ri[i,2]=max(b2)
-#   for (r in 1:24) b4[j]=adjustedRandIndex(m_out[i,],myclusters[r,])
-#   ri_MLD[i,1]=max(b4)
-# }
+## get ARI
+for (i in 1:rep) {
+  b1 <- rep(0,24);b2 <- b1;b3 <- b1; b4 <- b1
+  for (j in 1:24) b1[j]=adjustedRandIndex(k_out[2*i-1,],myclusters[j,])
+  ri[i,1]=max(b1)
+  for (l in 1:24) b2[l]=adjustedRandIndex(k_out[2*i,],myclusters[l,])
+  ri[i,2]=max(b2)
+  for (r in 1:24) b4[j]=adjustedRandIndex(m_out[i,],myclusters[r,])
+  ri_MLD[i,1]=max(b4)
+}
 
 
