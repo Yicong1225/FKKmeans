@@ -10,7 +10,7 @@ gen_solve <-  function(V) return(ginv(V))
 sqrt_matrix<-function (V) {
   V.eig<-eigen(V)
   V.eigvalues<-V.eig$values
-  Vsqrt.eigvalues<-V.eigvalues
+  Vsqrt.eigvalues<-V.eigvalues  
   for(i in 1:length(V.eigvalues)){
     if (V.eigvalues[i]<=0) {Vsqrt.eigvalues[i]=0
     } else {Vsqrt.eigvalues[i]=sqrt(V.eigvalues[i])}
