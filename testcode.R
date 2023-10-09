@@ -3,7 +3,7 @@
 ############################################################################
 source("FKKmeans_main.R")
 s <- 3
-oise.sd <- 0.2 ## Noise level
+noise.sd <- 0.2 ## Noise level
 m <- 10 	## No. of individual (load with common file)
 k <- 3 ## No. of repeated measures within a cluster/subject
 n <- m * k	## Total sample size
